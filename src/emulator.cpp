@@ -1,4 +1,5 @@
 #include <iostream>
+#include <SDL2/SDL.h>
 #include "emulator.h"
 
 using namespace masdl;
@@ -8,5 +9,12 @@ Emulator::Emulator() {
 };
 
 void Emulator::boot() {
-  std::cout << "booting...\n";
+  int sdl_result = SDL_Init(SDL_INIT_VIDEO);
+
+  if (sdl_result > -1) {
+    std::cout << "SDL initialized\n";
+    SDL_Quit();
+  } else {
+    std::cout << "SDL failed to initialize\n";
+  }
 };

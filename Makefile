@@ -4,7 +4,7 @@ TARGET := bin/masdl
 SOURCES := $(shell find src -type f -name "*.cpp")
 OBJECTS := $(patsubst src/%,build/%,$(SOURCES:.cpp=.o))
 CFLAGS := -g -Wall
-LIB := 
+LIB := -L lib -l SDL2
 INC := -I include
 
 $(TARGET): $(OBJECTS)
