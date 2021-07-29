@@ -3,7 +3,7 @@ CC := g++ # This is the main compiler
 TARGET := bin/masdl
 SOURCES := $(shell find src -type f -name "*.cpp")
 OBJECTS := $(patsubst src/%,build/%,$(SOURCES:.cpp=.o))
-CFLAGS := -g -Wall
+CFLAGS := -g -Wall -std=c++17
 LIB := -L lib -l SDL2
 INC := -I include
 
@@ -16,7 +16,7 @@ build/%.o: src/%.cpp
 	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
-	@echo " Cleaning..."; 
+	@echo " Cleaning...";
 	@echo " $(RM) -r build $(TARGET)"; $(RM) -r build $(TARGET)
 
 .PHONY: clean
