@@ -14,8 +14,8 @@ int main(int argc, char* argv[]) {
   std::cout << "Finished booting up\n";
   std::cout << "Emulation started\n";
 
+  e->load();
   e->start();
-  e->stop();
 
   std::cout << "Emulation stopped\n";
 

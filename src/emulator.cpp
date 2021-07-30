@@ -3,6 +3,10 @@
 
 using namespace masdl;
 
+Emulator::Emulator() {
+  memory_ = new Memory();
+}
+
 bool Emulator::boot() {
   const int sdl_initialized = SDL_Init(SDL_INIT_EVERYTHING);
 
@@ -12,6 +16,10 @@ bool Emulator::boot() {
 
   return true;
 };
+
+void Emulator::load() {
+  memory_->reset();
+}
 
 void Emulator::start() {
   running_ = true;
@@ -60,6 +68,6 @@ void Emulator::render_frame() {
   }
 };
 
-void Emulator::stop() {
+Emulator::~Emulator() {
   SDL_Quit();
-};
+}

@@ -2,6 +2,11 @@
 
 using namespace masdl::memory;
 
+void MemoryControlRegister::reset() {
+  ram_banking_enabled_ = false;
+  current_ram_bank_ = 0;
+}
+
 void MemoryControlRegister::write(const unsigned char value) {
   if ((value & 8) > 0) {
     ram_banking_enabled_ = true;

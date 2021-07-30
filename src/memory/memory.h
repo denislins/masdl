@@ -8,6 +8,7 @@ namespace masdl {
       public:
         Memory();
 
+        void reset();
         unsigned char read(const unsigned short address);
         void write(const unsigned short address, const unsigned char value);
 
@@ -16,9 +17,9 @@ namespace masdl {
         unsigned char ram_[0x4000];
         unsigned char ram_banks_[2][0x4000];
 
-        unsigned char first_rom_bank_ = 0;
-        unsigned char second_rom_bank_ = 0;
-        unsigned char third_rom_bank_ = 0;
+        unsigned char first_rom_bank_;
+        unsigned char second_rom_bank_;
+        unsigned char third_rom_bank_;
 
         MemoryControlRegister *control_register_;
 

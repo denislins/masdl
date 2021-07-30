@@ -1,3 +1,4 @@
+#include <iostream>
 #include "memory.h"
 
 using namespace masdl::memory;
@@ -5,6 +6,18 @@ using namespace masdl::memory;
 Memory::Memory() {
   control_register_ = new MemoryControlRegister();
 };
+
+void Memory::reset() {
+  memset(rom_, 0, sizeof(rom_));
+  memset(ram_, 0, sizeof(ram_));
+  memset(ram_banks_, 0, sizeof(ram_banks_));
+
+  first_rom_bank_ = 0;
+  second_rom_bank_ = 0;
+  third_rom_bank_ = 0;
+
+  control_register_->reset();
+}
 
 void Memory::write(const unsigned short address, const unsigned char value) {
   if (address < 0x8000) {
