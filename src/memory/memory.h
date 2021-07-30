@@ -25,6 +25,7 @@ namespace masdl {
 
         void write_to_ram(const unsigned short address, const unsigned char value);
         void page_memory(const unsigned short address, const unsigned char value);
+        unsigned char read_from_rom(const unsigned short address);
     };
   };
 };
