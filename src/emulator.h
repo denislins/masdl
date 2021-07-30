@@ -1,5 +1,4 @@
-#ifndef MASDL_EMULATOR_H
-#define MASDL_EMULATOR_H
+#pragma once
 
 namespace masdl {
   class Emulator {
@@ -17,5 +16,3 @@ namespace masdl {
       void render_frame();
   };
 };
-
-#endif
