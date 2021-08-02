@@ -12,7 +12,7 @@ $(TARGET): $(OBJECTS)
 	@echo " $(CC) $^ -o $(TARGET) $(LIB)"; $(CC) $^ -o $(TARGET) $(LIB)
 
 build/%.o: src/%.cpp
-	@mkdir -p build/{memory,cpu,screen}
+	@mkdir -p build/{memory,cpu,screen} build/cpu/registers
 	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:
