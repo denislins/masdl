@@ -13,6 +13,9 @@ $(TARGET): $(OBJECTS)
 
 build/%.o: src/%.cpp
 	@mkdir -p build
+	@mkdir -p build/memory
+	@mkdir -p build/cpu
+	@mkdir -p build/screen
 	@echo " $(CC) $(CFLAGS) $(INC) -c -o $@ $<"; $(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 clean:

@@ -5,6 +5,8 @@ using namespace masdl;
 
 Emulator::Emulator() {
   memory_ = new Memory();
+  cpu_ = new Cpu(memory_);
+  screen_ = new Screen();
 }
 
 bool Emulator::boot() {

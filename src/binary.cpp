@@ -18,6 +18,4 @@ int main(int argc, char* argv[]) {
   e->start();
 
   std::cout << "Emulation stopped\n";
-
-  return 1;
 };
