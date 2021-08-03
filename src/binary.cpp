@@ -4,9 +4,9 @@
 using namespace masdl;
 
 int main(int argc, char* argv[]) {
-  Emulator *e = new Emulator();
+  Emulator *emulator = new Emulator();
 
-  if (e->boot() == false) {
+  if (emulator->boot() == false) {
     std::cout << "Failed to initialize\n";
     return 0;
   }
@@ -14,8 +14,8 @@ int main(int argc, char* argv[]) {
   std::cout << "Finished booting up\n";
   std::cout << "Emulation started\n";
 
-  e->load();
-  e->start();
+  emulator->reset();
+  emulator->start();
 
   std::cout << "Emulation stopped\n";
 };

@@ -11,3 +11,12 @@ Cpu::Cpu(Memory *memory) {
 void Cpu::reset() {
   registers_->reset();
 }
+
+char Cpu::tick() {
+  const unsigned short address = registers_->read_pc();
+  registers_->write_pc(address + 1);
+
+  // const unsigned char opcode = memory_->read(address);
+
+  return 8;
+}

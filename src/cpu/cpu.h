@@ -11,7 +11,9 @@ namespace masdl {
     class Cpu {
       public:
         Cpu(Memory *memory);
+
         void reset();
+        char tick();
 
       private:
         Memory *memory_;

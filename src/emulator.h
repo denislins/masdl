@@ -15,7 +15,7 @@ namespace masdl {
       ~Emulator();
 
       bool boot();
-      void load();
+      void reset();
       void start();
 
     private:

@@ -24,6 +24,142 @@ void RegisterSet::reset() {
   r_register_->reset();
 }
 
+unsigned char RegisterSet::read_a() {
+  return a_register_->read();
+}
+
+unsigned char RegisterSet::read_b() {
+  return b_register_->read();
+}
+
+unsigned char RegisterSet::read_c() {
+  return c_register_->read();
+}
+
+unsigned char RegisterSet::read_d() {
+  return d_register_->read();
+}
+
+unsigned char RegisterSet::read_e() {
+  return e_register_->read();
+}
+
+unsigned char RegisterSet::read_f() {
+  return f_register_->read();
+}
+
+unsigned char RegisterSet::read_h() {
+  return h_register_->read();
+}
+
+unsigned char RegisterSet::read_l() {
+  return l_register_->read();
+}
+
+unsigned short RegisterSet::read_af() {
+  return af_register_->read();
+}
+
+unsigned short RegisterSet::read_bc() {
+  return bc_register_->read();
+}
+
+unsigned short RegisterSet::read_de() {
+  return de_register_->read();
+}
+
+unsigned short RegisterSet::read_hl() {
+  return hl_register_->read();
+}
+
+unsigned short RegisterSet::read_ix() {
+  return ix_register_->read();
+}
+
+unsigned short RegisterSet::read_iy() {
+  return iy_register_->read();
+}
+
+unsigned short RegisterSet::read_pc() {
+  return pc_register_->read();
+}
+
+unsigned short RegisterSet::read_sp() {
+  return sp_register_->read();
+}
+
+unsigned short RegisterSet::read_r() {
+  return r_register_->read();
+}
+
+void RegisterSet::write_a(const unsigned char value) {
+  a_register_->write(value);
+}
+
+void RegisterSet::write_b(const unsigned char value) {
+  b_register_->write(value);
+}
+
+void RegisterSet::write_c(const unsigned char value) {
+  c_register_->write(value);
+}
+
+void RegisterSet::write_d(const unsigned char value) {
+  d_register_->write(value);
+}
+
+void RegisterSet::write_e(const unsigned char value) {
+  e_register_->write(value);
+}
+
+void RegisterSet::write_f(const unsigned char value) {
+  f_register_->write(value);
+}
+
+void RegisterSet::write_h(const unsigned char value) {
+  h_register_->write(value);
+}
+
+void RegisterSet::write_l(const unsigned char value) {
+  l_register_->write(value);
+}
+
+void RegisterSet::write_af(const unsigned short value) {
+  af_register_->write(value);
+}
+
+void RegisterSet::write_bc(const unsigned short value) {
+  bc_register_->write(value);
+}
+
+void RegisterSet::write_de(const unsigned short value) {
+  de_register_->write(value);
+}
+
+void RegisterSet::write_hl(const unsigned short value) {
+  hl_register_->write(value);
+}
+
+void RegisterSet::write_ix(const unsigned short value) {
+  ix_register_->write(value);
+}
+
+void RegisterSet::write_iy(const unsigned short value) {
+  iy_register_->write(value);
+}
+
+void RegisterSet::write_pc(const unsigned short value) {
+  pc_register_->write(value);
+}
+
+void RegisterSet::write_sp(const unsigned short value) {
+  sp_register_->write(value);
+}
+
+void RegisterSet::write_r(const unsigned short value) {
+  r_register_->write(value);
+}
+
 void RegisterSet::init_byte_registers() {
   a_register_ = new ByteRegister();
   b_register_ = new ByteRegister();

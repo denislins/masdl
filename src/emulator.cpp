@@ -19,8 +19,9 @@ bool Emulator::boot() {
   return true;
 };
 
-void Emulator::load() {
+void Emulator::reset() {
   memory_->reset();
+  cpu_->reset();
 }
 
 void Emulator::start() {
@@ -58,7 +59,7 @@ void Emulator::render_frame() {
   unsigned long frame_machine_cycles = 0;
 
   while (frame_machine_cycles < MACHINE_CLOCKS_PER_CYCLE) {
-    const char cpu_cycles = 8;
+    const char cpu_cycles = cpu_->tick();
     const char machine_cycles = cpu_cycles * 3;
 
     // const double vdp_cycles = machine_cycles / 2.0;
