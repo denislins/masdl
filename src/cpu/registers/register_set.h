@@ -2,6 +2,7 @@
 
 #include "byte_register.h"
 #include "flags_register.h"
+#include "composite_register.h"
 
 namespace masdl {
   namespace cpu {
@@ -22,7 +23,13 @@ namespace masdl {
 
           FlagsRegister *flags_register_;
 
+          CompositeRegister *af_register_;
+          CompositeRegister *bc_register_;
+          CompositeRegister *de_register_;
+          CompositeRegister *hl_register_;
+
           void init_byte_registers();
+          void init_composite_registers();
       };
     };
   };
