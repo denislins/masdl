@@ -43,6 +43,6 @@ void RegisterSet::init_composite_registers() {
 
 void RegisterSet::init_word_registers() {
   pc_register_ = new WordRegister();
-  sp_register_ = new WordRegister();
+  sp_register_ = new WordRegister(0xDFF0);
   r_register_ = new WordRegister();
 }
