@@ -26,7 +26,7 @@ void FlagsRegister::update_carry_flag(const bool value) {
   update_flag(1, value);
 }
 
-void FlagsRegister::update_flag(const char mask, const bool value) {
+void FlagsRegister::update_flag(const unsigned char mask, const bool value) {
   unsigned char updated_register_value = read();
 
   if (value) {
