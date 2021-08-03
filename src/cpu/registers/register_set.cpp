@@ -4,8 +4,9 @@ using namespace masdl::cpu::registers;
 
 RegisterSet::RegisterSet() {
   init_byte_registers();
-  init_composite_registers();
   init_word_registers();
+  init_composite_registers();
+  init_shadow_registers();
 }
 
 void RegisterSet::reset() {
@@ -34,6 +35,14 @@ void RegisterSet::init_byte_registers() {
   l_register_ = new ByteRegister();
 }
 
+void RegisterSet::init_word_registers() {
+  ix_register_ = new WordRegister();
+  iy_register_ = new WordRegister();
+  pc_register_ = new WordRegister();
+  sp_register_ = new WordRegister(0xDFF0);
+  r_register_ = new WordRegister();
+}
+
 void RegisterSet::init_composite_registers() {
   af_register_ = new CompositeRegister(a_register_, f_register_);
   bc_register_ = new CompositeRegister(b_register_, c_register_);
@@ -41,8 +50,9 @@ void RegisterSet::init_composite_registers() {
   hl_register_ = new CompositeRegister(h_register_, l_register_);
 }
 
-void RegisterSet::init_word_registers() {
-  pc_register_ = new WordRegister();
-  sp_register_ = new WordRegister(0xDFF0);
-  r_register_ = new WordRegister();
+void RegisterSet::init_shadow_registers() {
+  af_shadow_register_ = new WordRegister();
+  bc_shadow_register_ = new WordRegister();
+  de_shadow_register_ = new WordRegister();
+  hl_shadow_register_ = new WordRegister();
 }

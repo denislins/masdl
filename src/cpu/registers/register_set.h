@@ -28,13 +28,21 @@ namespace masdl {
           CompositeRegister *de_register_;
           CompositeRegister *hl_register_;
 
+          WordRegister *ix_register_;
+          WordRegister *iy_register_;
           WordRegister *pc_register_;
           WordRegister *sp_register_;
           WordRegister *r_register_;
 
+          WordRegister *af_shadow_register_;
+          WordRegister *bc_shadow_register_;
+          WordRegister *de_shadow_register_;
+          WordRegister *hl_shadow_register_;
+
           void init_byte_registers();
           void init_composite_registers();
           void init_word_registers();
+          void init_shadow_registers();
       };
     };
   };
