@@ -15,7 +15,7 @@ namespace masdl {
       ~Emulator();
 
       bool boot();
-      void reset();
+      bool load_rom(char *path);
       void start();
 
     private:
@@ -26,6 +26,7 @@ namespace masdl {
       Screen *screen_;
       bool running_;
 
+      void reset();
       void process_events();
       void render_frame();
   };

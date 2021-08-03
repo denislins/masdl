@@ -1,19 +1,24 @@
 #pragma once
 
 #include "memory_control_register.h"
+#include "../cartridge/cartridge.h"
 
 namespace masdl {
+  using namespace cartridge;
+
   namespace memory {
     class Memory {
       public:
         Memory();
 
         void reset();
+        void load_cartridge(Cartridge *cartridge);
         unsigned char read(const unsigned short address);
         void write(const unsigned short address, const unsigned char value);
 
       private:
-        unsigned char rom_[0x100000];
+        Cartridge *cartridge_;
+
         unsigned char ram_[0x4000];
         unsigned char ram_banks_[2][0x4000];
 

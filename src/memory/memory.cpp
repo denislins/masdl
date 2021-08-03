@@ -8,7 +8,6 @@ Memory::Memory() {
 };
 
 void Memory::reset() {
-  memset(rom_, 0, sizeof(rom_));
   memset(ram_, 0, sizeof(ram_));
   memset(ram_banks_, 0, sizeof(ram_banks_));
 
@@ -17,6 +16,14 @@ void Memory::reset() {
   third_rom_bank_ = 0;
 
   control_register_->reset();
+}
+
+void Memory::load_cartridge(Cartridge *cartridge) {
+  if (cartridge_ != nullptr) {
+    delete cartridge_;
+  }
+
+  cartridge_ = cartridge;
 }
 
 void Memory::write(const unsigned short address, const unsigned char value) {
@@ -98,7 +105,7 @@ void Memory::page_memory(const unsigned short address, const unsigned char value
 
 unsigned char Memory::read_from_rom(const unsigned short address) {
   if (address < 0x400) {
-    return rom_[address];
+    return cartridge_->read_address(address);
   }
 
   unsigned short mapped_address;
@@ -111,5 +118,5 @@ unsigned char Memory::read_from_rom(const unsigned short address) {
     mapped_address = address + (0x4000 * third_rom_bank_) - 0x8000;
   }
 
-  return rom_[mapped_address];
+  return cartridge_->read_address(mapped_address);
 }

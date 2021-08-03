@@ -1,7 +1,9 @@
 #include <SDL2/SDL.h>
 #include "emulator.h"
+#include "cartridge/cartridge.h"
 
 using namespace masdl;
+using namespace masdl::cartridge;
 
 Emulator::Emulator() {
   memory_ = new Memory();
@@ -19,9 +21,18 @@ bool Emulator::boot() {
   return true;
 };
 
-void Emulator::reset() {
-  memory_->reset();
-  cpu_->reset();
+bool Emulator::load_rom(char *path) {
+  reset();
+
+  Cartridge *cartridge = new Cartridge(path);
+
+  if (cartridge->is_valid() == false) {
+    return false;
+  }
+
+  memory_->load_cartridge(cartridge);
+
+  return true;
 }
 
 void Emulator::start() {
@@ -42,6 +53,11 @@ void Emulator::start() {
     SDL_Delay(delay_time);
   }
 };
+
+void Emulator::reset() {
+  memory_->reset();
+  cpu_->reset();
+}
 
 void Emulator::process_events() {
   SDL_Event event;
