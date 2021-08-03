@@ -36,7 +36,7 @@ void Emulator::start() {
     const Uint64 end = SDL_GetPerformanceCounter();
 
     const double elapsed_time = (end - start) / (double) SDL_GetPerformanceFrequency() * 1000.0;
-    const int delay_time = floor(16.666f - elapsed_time);
+    const short delay_time = floor(16.666f - elapsed_time);
 
     SDL_Delay(delay_time);
   }
@@ -55,11 +55,11 @@ void Emulator::process_events() {
 };
 
 void Emulator::render_frame() {
-  int frame_machine_cycles = 0;
+  unsigned long frame_machine_cycles = 0;
 
   while (frame_machine_cycles < MACHINE_CLOCKS_PER_CYCLE) {
-    const int cpu_cycles = 8;
-    const int machine_cycles = cpu_cycles * 3;
+    const char cpu_cycles = 8;
+    const char machine_cycles = cpu_cycles * 3;
 
     // const double vdp_cycles = machine_cycles / 2.0;
 

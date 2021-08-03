@@ -15,7 +15,7 @@ namespace masdl {
           void update_carry_flag(const bool value);
 
         private:
-          void update_flag(const unsigned char mask, const bool value);
+          void update_flag(const char mask, const bool value);
       };
     };
   };

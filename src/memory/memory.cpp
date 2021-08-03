@@ -101,7 +101,7 @@ unsigned char Memory::read_from_rom(const unsigned short address) {
     return rom_[address];
   }
 
-  unsigned int mapped_address;
+  unsigned short mapped_address;
 
   if (address < 0x4000) {
     mapped_address = address + (0x4000 * first_rom_bank_);
