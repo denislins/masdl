@@ -11,6 +11,7 @@ namespace masdl {
       class RegisterSet {
         public:
           RegisterSet();
+          ~RegisterSet();
 
           void reset();
 

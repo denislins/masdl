@@ -26,4 +26,6 @@ int main(int argc, char* argv[]) {
   emulator->start();
 
   std::cout << "Emulation stopped" << std::endl;
+
+  delete emulator;
 };

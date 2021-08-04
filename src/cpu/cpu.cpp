@@ -21,3 +21,7 @@ char Cpu::tick() {
 
   return 8;
 }
+
+Cpu::~Cpu() {
+  delete registers_;
+}

@@ -192,3 +192,31 @@ void RegisterSet::init_shadow_registers() {
   de_shadow_register_ = new WordRegister();
   hl_shadow_register_ = new WordRegister();
 }
+
+RegisterSet::~RegisterSet() {
+  delete a_register_;
+  delete b_register_;
+  delete c_register_;
+  delete d_register_;
+  delete e_register_;
+  delete f_register_;
+  delete h_register_;
+  delete l_register_;
+
+  delete af_register_;
+  delete bc_register_;
+  delete de_register_;
+  delete hl_register_;
+
+  delete ix_register_;
+  delete iy_register_;
+
+  delete pc_register_;
+  delete sp_register_;
+  delete r_register_;
+
+  delete af_shadow_register_;
+  delete bc_shadow_register_;
+  delete de_shadow_register_;
+  delete hl_shadow_register_;
+}

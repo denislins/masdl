@@ -3,10 +3,10 @@
 using namespace masdl::screen;
 
 Screen::Screen() {
-  // init_window();
-  // init_renderer();
+  init_window();
+  init_renderer();
 
-  // refresh();
+  refresh();
 }
 
 void Screen::init_window() {
@@ -23070,7 +23070,13 @@ void Screen::refresh() {
   SDL_Texture *texture = SDL_CreateTexture(renderer_, SDL_PIXELFORMAT_RGB888, SDL_TEXTUREACCESS_STATIC, 160, 144);
   SDL_UpdateTexture(texture, NULL, pixels, 160 * sizeof (int));
 
-  SDL_RenderClear(renderer_);
   SDL_RenderCopy(renderer_, texture, NULL, NULL);
   SDL_RenderPresent(renderer_);
+
+  SDL_DestroyTexture(texture);
+}
+
+Screen::~Screen() {
+  SDL_DestroyRenderer(renderer_);
+  SDL_DestroyWindow(window_);
 }

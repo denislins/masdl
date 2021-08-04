@@ -39,3 +39,9 @@ void Cartridge::read_file(const char* path) {
   file.read(contents_, file_size);
   file.close();
 }
+
+Cartridge::~Cartridge() {
+  if (contents_ != nullptr) {
+    delete contents_;
+  }
+}

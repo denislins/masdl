@@ -7,6 +7,8 @@ namespace masdl {
     class Screen {
       public:
         Screen();
+        ~Screen();
+
         void refresh();
 
       private:

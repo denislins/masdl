@@ -100,5 +100,13 @@ void Emulator::render_frame() {
 };
 
 Emulator::~Emulator() {
+  delete screen_;
+  delete cpu_;
+  delete memory_;
+
+  if (cartridge_ != nullptr) {
+    delete cartridge_;
+  }
+
   SDL_Quit();
 }

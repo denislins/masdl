@@ -10,6 +10,7 @@ namespace masdl {
     class Memory {
       public:
         Memory();
+        ~Memory();
 
         void reset();
         void load_cartridge(Cartridge *cartridge);
