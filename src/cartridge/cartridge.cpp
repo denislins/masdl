@@ -4,7 +4,7 @@
 
 using namespace masdl::cartridge;
 
-Cartridge::Cartridge(char *path) {
+Cartridge::Cartridge(const char* path) {
   read_file(path);
 }
 
@@ -16,7 +16,7 @@ unsigned char Cartridge::read_address(const unsigned short address) {
   return (unsigned char) contents_[address];
 }
 
-void Cartridge::read_file(char *path) {
+void Cartridge::read_file(const char* path) {
   std::ifstream file(path, std::ios::in | std::ios::binary | std::ios::ate);
 
   if (file.is_open() == false) {
@@ -24,7 +24,7 @@ void Cartridge::read_file(char *path) {
     return;
   }
 
-  std::streampos file_size = file.tellg();
+  const std::streampos file_size = file.tellg();
   contents_ = new char[file_size];
 
   short start_position = 0;

@@ -4,7 +4,7 @@ namespace masdl {
   namespace cartridge {
     class Cartridge {
       public:
-        Cartridge(char *path);
+        Cartridge(const char* path);
 
         bool is_valid();
         unsigned char read_address(const unsigned short address);
@@ -12,7 +12,7 @@ namespace masdl {
       private:
         char *contents_;
 
-        void read_file(char *path);
+        void read_file(const char* path);
     };
   };
 };

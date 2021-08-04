@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <SDL2/SDL.h>
 #include "emulator.h"
 #include "cartridge/cartridge.h"
@@ -21,42 +22,54 @@ bool Emulator::boot() {
   return true;
 };
 
-bool Emulator::load_rom(char *path) {
+bool Emulator::load_rom(const char* path) {
   reset();
 
-  Cartridge *cartridge = new Cartridge(path);
+  cartridge_ = new Cartridge(path);
 
-  if (cartridge->is_valid() == false) {
+  if (cartridge_->is_valid() == false) {
     return false;
   }
 
-  memory_->load_cartridge(cartridge);
+  memory_->load_cartridge(cartridge_);
 
   return true;
 }
 
 void Emulator::start() {
+  if (cartridge_ == nullptr || cartridge_->is_valid() == false) {
+    throw std::runtime_error("No game to emulate");
+  }
+
   running_ = true;
 
   while (running_) {
-    process_events();
-
-    const Uint64 start = SDL_GetPerformanceCounter();
-
-    render_frame();
-
-    const Uint64 end = SDL_GetPerformanceCounter();
-
-    const double elapsed_time = (end - start) / (double) SDL_GetPerformanceFrequency() * 1000.0;
-    const short delay_time = floor(16.666f - elapsed_time);
-
-    SDL_Delay(delay_time);
+    run_cycle();
   }
 };
 
 void Emulator::reset() {
+  if (cartridge_ != nullptr) {
+    delete cartridge_;
+  }
+
   memory_->reset();
   cpu_->reset();
+}
+
+void Emulator::run_cycle() {
+  process_events();
+
+  const Uint64 start = SDL_GetPerformanceCounter();
+
+  render_frame();
+
+  const Uint64 end = SDL_GetPerformanceCounter();
+
+  const double elapsed_time = (end - start) / (double) SDL_GetPerformanceFrequency() * 1000.0;
+  const short delay_time = floor(16.666f - elapsed_time);
+
+  SDL_Delay(delay_time);
 }
 
 void Emulator::process_events() {

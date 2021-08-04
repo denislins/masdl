@@ -3,11 +3,13 @@
 #include "memory/memory.h"
 #include "cpu/cpu.h"
 #include "screen/screen.h"
+#include "cartridge/cartridge.h"
 
 namespace masdl {
   using namespace memory;
   using namespace cpu;
   using namespace screen;
+  using namespace cartridge;
 
   class Emulator {
     public:
@@ -15,7 +17,7 @@ namespace masdl {
       ~Emulator();
 
       bool boot();
-      bool load_rom(char *path);
+      bool load_rom(const char* path);
       void start();
 
     private:
@@ -24,9 +26,11 @@ namespace masdl {
       Memory *memory_;
       Cpu *cpu_;
       Screen *screen_;
+      Cartridge *cartridge_;
       bool running_;
 
       void reset();
+      void run_cycle();
       void process_events();
       void render_frame();
   };

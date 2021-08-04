@@ -19,10 +19,6 @@ void Memory::reset() {
 }
 
 void Memory::load_cartridge(Cartridge *cartridge) {
-  if (cartridge_ != nullptr) {
-    delete cartridge_;
-  }
-
   cartridge_ = cartridge;
 }
 
