@@ -26,7 +26,7 @@ namespace masdl {
       Memory *memory_;
       Cpu *cpu_;
       Screen *screen_;
-      Cartridge *cartridge_;
+      Cartridge *cartridge_ = nullptr;
       bool running_;
 
       void reset();

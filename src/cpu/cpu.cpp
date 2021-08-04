@@ -14,6 +14,7 @@ void Cpu::reset() {
 
 char Cpu::tick() {
   const unsigned short address = registers_->read_pc();
+
   registers_->write_pc(address + 1);
 
   // const unsigned char opcode = memory_->read(address);
