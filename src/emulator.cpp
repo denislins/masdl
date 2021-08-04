@@ -4,7 +4,6 @@
 #include "cartridge/cartridge.h"
 
 using namespace masdl;
-using namespace masdl::cartridge;
 
 Emulator::Emulator() {
   memory_ = new Memory();
@@ -76,8 +75,8 @@ void Emulator::process_events() {
   SDL_Event event;
 
   while (SDL_PollEvent(&event) != 0) {
-		switch (event.type) {
-			case SDL_QUIT:
+    switch (event.type) {
+      case SDL_QUIT:
         running_ = false;
         break;
     }
