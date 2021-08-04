@@ -57,6 +57,13 @@ namespace masdl {
           void write_sp(const unsigned short value);
           void write_r(const unsigned short value);
 
+          void update_sign_flag(const bool value);
+          void update_zero_flag(const bool value);
+          void update_half_carry_flag(const bool value);
+          void update_parity_flag(const bool value);
+          void update_subtract_flag(const bool value);
+          void update_carry_flag(const bool value);
+
         private:
           ByteRegister *a_register_;
           ByteRegister *b_register_;

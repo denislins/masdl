@@ -160,6 +160,30 @@ void RegisterSet::write_r(const unsigned short value) {
   r_register_->write(value);
 }
 
+void RegisterSet::update_sign_flag(const bool value) {
+  f_register_->update_sign_flag(value);
+}
+
+void RegisterSet::update_zero_flag(const bool value) {
+  f_register_->update_zero_flag(value);
+}
+
+void RegisterSet::update_half_carry_flag(const bool value) {
+  f_register_->update_half_carry_flag(value);
+}
+
+void RegisterSet::update_parity_flag(const bool value) {
+  f_register_->update_parity_flag(value);
+}
+
+void RegisterSet::update_subtract_flag(const bool value) {
+  f_register_->update_subtract_flag(value);
+}
+
+void RegisterSet::update_carry_flag(const bool value) {
+  f_register_->update_carry_flag(value);
+}
+
 void RegisterSet::init_byte_registers() {
   a_register_ = new ByteRegister();
   b_register_ = new ByteRegister();
