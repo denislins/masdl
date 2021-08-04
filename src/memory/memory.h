@@ -17,7 +17,7 @@ namespace masdl {
         void write(const unsigned short address, const unsigned char value);
 
       private:
-        Cartridge *cartridge_;
+        Cartridge *cartridge_ = nullptr;
 
         unsigned char ram_[0x4000];
         unsigned char ram_banks_[2][0x4000];

@@ -27,7 +27,15 @@ void Cartridge::read_file(char *path) {
   std::streampos file_size = file.tellg();
   contents_ = new char[file_size];
 
-  file.seekg(0, std::ios::beg);
+  short start_position = 0;
+
+  // strip off header in case rom was dumped using a mega drive cartridge
+  // http://www.smspower.org/forums/viewtopic.php?t=7999&highlight=header+512
+  if (file_size % 0x4000) {
+    start_position = 512;
+  }
+
+  file.seekg(start_position, std::ios::beg);
   file.read(contents_, file_size);
   file.close();
 }
