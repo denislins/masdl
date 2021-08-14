@@ -42,6 +42,6 @@ void Cartridge::read_file(const char* path) {
 
 Cartridge::~Cartridge() {
   if (contents_ != nullptr) {
-    delete contents_;
+    delete[] contents_;
   }
 }
