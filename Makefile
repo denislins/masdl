@@ -4,8 +4,8 @@ TARGET := bin/masdl
 SOURCES := $(shell find src -type f -name "*.cpp")
 OBJECTS := $(patsubst src/%,build/%,$(SOURCES:.cpp=.o))
 CFLAGS := -g -Wall -std=c++20
-LIB := -L lib -l SDL2
-INC := -I include
+LIB := -L/opt/homebrew/lib -lSDL2
+INC := -I lib
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."x
