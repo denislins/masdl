@@ -2,11 +2,11 @@
 
 #include "../memory/memory.h"
 #include "registers/register_set.h"
-#include "instructions/instruction_resolver.h"
+#include "instruction_sets/default_instruction_set.h"
 
 using namespace masdl::memory;
 using namespace masdl::cpu::registers;
-using namespace masdl::cpu::instructions;
+using namespace masdl::cpu::instruction_sets;
 
 namespace masdl {
   namespace cpu {
@@ -16,12 +16,14 @@ namespace masdl {
         ~Cpu();
 
         void reset();
-        char tick();
+        unsigned char tick();
 
       private:
         Memory *memory_;
         RegisterSet *registers_;
-        InstructionResolver *resolver_;
+        DefaultInstructionSet *default_instruction_set_;
+
+        unsigned char execute_instruction(unsigned char opcode);
     };
   };
 };

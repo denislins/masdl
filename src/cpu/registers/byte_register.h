@@ -5,6 +5,7 @@ namespace masdl {
     namespace registers {
       class ByteRegister {
         public:
+          virtual ~ByteRegister();
           void reset();
           unsigned char read();
           void write(const unsigned char value);

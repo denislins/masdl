@@ -99,8 +99,8 @@ void Memory::page_memory(const unsigned short address, const unsigned char value
   }
 }
 
-// cartridge could be missing, but checking for it here would be too slow
-// instead, I'll trust that Emulator::load_rom() will be used correctly
+// Cartridge could be missing, but checking for it here would be too slow.
+// Instead, I'll trust that Emulator::load_rom() will be used correctly.
 unsigned char Memory::read_from_rom(const unsigned short address) {
   if (address < 0x400) {
     return cartridge_->read_address(address);

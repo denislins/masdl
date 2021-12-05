@@ -8,10 +8,12 @@ using namespace masdl::cpu::registers;
 
 namespace masdl {
   namespace cpu {
-    namespace instructions {
-      class InstructionResolver {
+    namespace instruction_sets {
+      class DefaultInstructionSet {
         public:
-          InstructionResolver(Memory *memory, RegisterSet *registers);
+          DefaultInstructionSet(Memory *memory, RegisterSet *registers);
+
+          unsigned char execute_instruction(unsigned char opcode);
 
         private:
           Memory *memory_;
